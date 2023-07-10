@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { v4 as uuid } from "uuid";
 const initialBooks = {
   books: [
     {
-      id: 1,
+      id: uuid(),
       title: "React",
       author: "sohan",
     },
     {
-      id: 2,
+      id: uuid(),
       title: "Reducx",
       author: "rahman",
     },
