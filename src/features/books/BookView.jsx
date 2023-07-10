@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBooks } from "./bookSlice";
-
+import { Link } from "react-router-dom";
 export default function BookView() {
   const books = useSelector((state) => state.booksReducer.books);
   const dispatch = useDispatch();
@@ -28,7 +28,9 @@ export default function BookView() {
                 <td>{title}</td>
                 <td>{author}</td>
                 <td>
-                  <button>edit</button>
+                  <Link to="/edit-book" state={{ id, title, author }}>
+                    <button>edit</button>
+                  </Link>
                   <button
                     onClick={() => {
                       handleDelete(id);
