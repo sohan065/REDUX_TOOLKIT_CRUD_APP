@@ -10,10 +10,11 @@ const initialBooks = {
     },
     {
       id: uuid(),
-      title: "Reducx",
+      title: "Redux",
       author: "rahman",
     },
   ],
+  filteredBooks: [],
 };
 
 const bookSlice = createSlice({
@@ -35,10 +36,19 @@ const bookSlice = createSlice({
         isExist[0].author = author;
       }
     },
+    searchBooks: (state, action) => {
+      const searchText = action.payload.toLowerCase();
+      if (searchText === null || searchText.length === 0) {
+        state.filteredBooks = state.books;
+      }
+      state.filteredBooks = state.books.filter((book) =>
+        book.title.toLowerCase().startsWith(searchText)
+      );
+    },
   },
 });
 
-export const { showBooks, addBooks, deleteBooks, editBooks } =
+export const { showBooks, addBooks, deleteBooks, editBooks, searchBooks } =
   bookSlice.actions;
 
 export default bookSlice.reducer;
