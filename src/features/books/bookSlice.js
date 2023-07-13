@@ -7,11 +7,15 @@ const initialBooks = {
       id: uuid(),
       title: "React",
       author: "sohan",
+      price: 10,
+      stock: 20,
     },
     {
       id: uuid(),
       title: "Redux",
       author: "rahman",
+      price: 10,
+      stock: 20,
     },
   ],
   filteredBooks: [],
@@ -45,10 +49,34 @@ const bookSlice = createSlice({
         book.title.toLowerCase().startsWith(searchText)
       );
     },
+    buyBooks: (state, action) => {
+      const id = action.payload;
+      const bookIndex = state.books.findIndex((book) => book.id === id);
+
+      if (bookIndex !== -1) {
+        const updatedBooks = [...state.books];
+        updatedBooks[bookIndex] = {
+          ...updatedBooks[bookIndex],
+          stock: updatedBooks[bookIndex].stock - 1,
+        };
+        return {
+          ...state,
+          books: updatedBooks,
+        };
+      }
+
+      return state;
+    },
   },
 });
 
-export const { showBooks, addBooks, deleteBooks, editBooks, searchBooks } =
-  bookSlice.actions;
+export const {
+  showBooks,
+  addBooks,
+  deleteBooks,
+  editBooks,
+  searchBooks,
+  buyBooks,
+} = bookSlice.actions;
 
 export default bookSlice.reducer;

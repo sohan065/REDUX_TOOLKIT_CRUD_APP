@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { deleteBooks, searchBooks } from "../features/books/bookSlice";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  buyBooks,
+  deleteBooks,
+  searchBooks,
+} from "../features/books/bookSlice";
 
 export default function Home() {
   const [searchText, setSearchText] = useState("");
   const books = useSelector((state) => state.booksReducer.filteredBooks);
   const dispatch = useDispatch();
-  const handleDelete = (id) => {
-    dispatch(deleteBooks(id));
+  const navigate = useNavigate();
+  const handleBuy = (id) => {
+    dispatch(buyBooks(id));
+    navigate("/");
   };
   const handleSearch = () => {
     dispatch(searchBooks(searchText));
@@ -36,27 +42,26 @@ export default function Home() {
               <td>ID</td>
               <td>Title</td>
               <td>Author</td>
-              <td>Action</td>
+              <td>Stock</td>
             </tr>
           </thead>
           <tbody>
             {books &&
               books.map((book) => {
-                const { id, title, author } = book;
+                const { id, title, author, stock } = book;
                 return (
                   <tr key={id}>
                     <td>{id}</td>
                     <td>{title}</td>
                     <td>{author}</td>
                     <td>
-                      <Link to="/edit-book" state={{ id, title, author }}>
-                        <button>edit</button>
-                      </Link>
+                      <button>{stock}</button>
+
                       <button
                         onClick={() => {
-                          handleDelete(id);
+                          handleBuy(id);
                         }}>
-                        delete
+                        buy
                       </button>
                     </td>
                   </tr>
