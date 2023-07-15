@@ -6,7 +6,8 @@ import Navbar from "../layouts/Navbar";
 import BookView from "../features/books/BookView";
 import AddBook from "../features/books/AddBook";
 import EditBook from "../features/books/EditBook";
-
+import AddUser from "../features/users/AddUser";
+import UserView from "../features/users/UserView";
 export default function Index() {
   return (
     <BrowserRouter>
@@ -17,6 +18,8 @@ export default function Index() {
           <Route path="/show-books" element={<BookView />} />
           <Route path="/add-book" element={<AddBook />} />
           <Route path="/edit-book" element={<EditBook />} />
+          <Route path="/add-user" element={<AddUser />} />
+          <Route path="/show-user" element={<UserView />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>

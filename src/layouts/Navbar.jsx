@@ -13,6 +13,12 @@ export default function Navbar() {
       <Link to="/add-book" className="nav-link">
         Add Books
       </Link>
+      <Link to="/add-user" className="nav-link">
+        Add User
+      </Link>
+      <Link to="/show-user" className="nav-link">
+        Show User
+      </Link>
     </nav>
   );
 }
