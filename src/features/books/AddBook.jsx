@@ -4,6 +4,8 @@ import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
 import { addBooks } from "./bookSlice";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 export default function AddBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -16,33 +18,36 @@ export default function AddBook() {
     navigate("/show-books");
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Add Books</h1>
-        <div className="form-field">
-          <label htmlFor="title">Title:</label>
-          <input
+    <div className="container-flud ">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+          <Form.Label>Title:</Form.Label>
+          <Form.Control
             type="text"
             id="title"
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            placeholder="title"
             required
           />
-        </div>
-        <div className="form-field">
-          <label htmlFor="author">Author:</label>
-          <input
+        </Form.Group>
+        <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+          <Form.Label>Author:</Form.Label>
+          <Form.Control
             type="text"
             id="author"
             name="author"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
+            placeholder="author-name"
             required
           />
-        </div>
-        <button type="submit">Add Book</button>
-      </form>
+        </Form.Group>
+        <Button type="submit" variant="success" className="w-50">
+          Add Book
+        </Button>
+      </Form>
     </div>
   );
 }
