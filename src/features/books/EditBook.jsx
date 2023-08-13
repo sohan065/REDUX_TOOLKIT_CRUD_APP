@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { editBooks } from "./bookSlice";
+import { Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 export default function EditBook() {
   const location = useLocation();
-  const [id, setId] = useState(location.state.id);
+  const [id] = useState(location.state.id);
   const [title, setTitle] = useState(location.state.title);
   const [author, setAuthor] = useState(location.state.author);
   const dispatch = useDispatch();
@@ -16,28 +18,30 @@ export default function EditBook() {
     navigate("/show-books");
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="form-field">
-          <label htmlFor="title">Title :</label>
-          <input
+    <div className="container-flud">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+          <Form.Label>Title:</Form.Label>
+          <Form.Control
             type="text"
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-        </div>
-        <div className="form-field">
-          <label htmlFor="author">Author :</label>
-          <input
+        </Form.Group>
+        <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+          <Form.Label>Author:</Form.Label>
+          <Form.Control
             type="text"
             name="author"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
-        </div>
-        <button type="submit">Update</button>
-      </form>
+        </Form.Group>
+        <Button type="submit" variant="success" className="w-50">
+          Update Book
+        </Button>
+      </Form>
     </div>
   );
 }
