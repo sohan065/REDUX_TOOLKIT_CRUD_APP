@@ -4,10 +4,7 @@ import axios from "axios";
 export const storeUser = createAsyncThunk(
   "storeUser",
   async (data, { rejectWithValue }) => {
-    const res = await axios.post(
-      "https://64b23b1d38e74e386d54d1fd.mockapi.io/users",
-      data
-    );
+    const res = await axios.post("http://127.0.0.1:8000/user/create", data);
     try {
       return res.data;
     } catch (error) {
@@ -16,10 +13,8 @@ export const storeUser = createAsyncThunk(
   }
 );
 
-export const getAllUser = createAsyncThunk("posts/getAllPosts", async () => {
-  const response = await axios.get(
-    "https://64b23b1d38e74e386d54d1fd.mockapi.io/users"
-  );
+export const getAllUser = createAsyncThunk("user/getAllUser", async () => {
+  const response = await axios.get("http://127.0.0.1:8000/user/data");
   return response.data;
 });
 

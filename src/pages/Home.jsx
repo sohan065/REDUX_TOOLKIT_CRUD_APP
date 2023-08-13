@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { buyBooks, searchBooks } from "../features/books/bookSlice";
+import React from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+// import { buyBooks, searchBooks } from "../features/books/bookSlice";
 
 export default function Home() {
-  const [searchText, setSearchText] = useState("");
-  const filteredBooks = useSelector(
-    (state) => state.booksReducer.filteredBooks
-  );
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const handleBuy = (id) => {
-    dispatch(buyBooks(id));
-    navigate("/");
-  };
-  const handleSearch = () => {
-    dispatch(searchBooks(searchText));
-  };
-  useEffect(() => {
-    dispatch(searchBooks(searchText));
-  }, [searchText]);
+  // const [searchText, setSearchText] = useState("");
+  // const filteredBooks = useSelector(
+  //   (state) => state.booksReducer.filteredBooks
+  // );
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const handleBuy = (id) => {
+  //   dispatch(buyBooks(id));
+  //   navigate("/");
+  // };
+  // const handleSearch = () => {
+  //   dispatch(searchBooks(searchText));
+  // };
+  // useEffect(() => {
+  //   dispatch(searchBooks(searchText));
+  // }, [searchText]);
   // useEffect(() => {
   //   // Reload filteredBooks when it gets updated
   //   dispatch(searchBooks(searchText));
   // }, [filteredBooks]); // Add filteredBooks as a dependency
   return (
     <>
-      <div>
+      {/* <div>
         <input
           type="text"
           name="searchText"
@@ -64,7 +64,7 @@ export default function Home() {
               })}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </>
   );
 }

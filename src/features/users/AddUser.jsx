@@ -5,7 +5,7 @@ import { storeUser } from "./usersSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function AddUser() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({ password: "1234" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const getUserData = (e) => {

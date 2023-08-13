@@ -10,7 +10,7 @@ export default function UserView() {
   useEffect(() => {
     dispatch(getAllUser());
   }, []);
-  console.log(users);
+  // console.log(users);
   return (
     <div>
       {isLoading && <h1>Loading...</h1>}

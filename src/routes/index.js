@@ -2,16 +2,16 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Error from "../pages/Error";
-import Navbar from "../layouts/Navbar";
 import BookView from "../features/books/BookView";
 import AddBook from "../features/books/AddBook";
 import EditBook from "../features/books/EditBook";
 import AddUser from "../features/users/AddUser";
 import UserView from "../features/users/UserView";
+import Header from "../layouts/Header";
 export default function Index() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
